@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControllerPerson : MonoBehaviour
 {
 	private bool hasBeenHit;
+	public GameObject hitBubble;
 
 	public void OnCollisionEnter2D( Collision2D collision )
 	{
@@ -12,6 +13,10 @@ public class ControllerPerson : MonoBehaviour
 		{
 			hasBeenHit = true;
 			ControllerTruck.truck.foodSold++;
+
+			GameObject hit = Instantiate( hitBubble, transform.position, Quaternion.identity );
+			hit.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10f;
+			Destroy( hit, 2f );
 		}
 	}
 }

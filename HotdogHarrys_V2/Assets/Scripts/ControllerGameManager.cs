@@ -113,18 +113,19 @@ public class ControllerGameManager : MonoBehaviour
 					if ( !PointerOverUI() )
 					{
 						Collider2D collider = CastRay();
-						if ( collider != null && collider.name == "truck" )
-						{
-							// We are clicking the truck, move the player
-							Debug.Log( "Clicked the truck." );
-							Vector2 target = Camera.main.ScreenToWorldPoint( new Vector3( Input.mousePosition.x, Input.mousePosition.y, 0f ) );
-							//ControllerTruck.truck.MovePlayer( target );
-						}
-						else
-						{
-							// We are probably trying to shoot something! Shoot in that direction, if we have hot dogs, of course.
-							ControllerTruck.truck.Shoot();
-						}
+						ControllerTruck.truck.Shoot();
+						//if ( collider != null && collider.name == "truck" )
+						//{
+						//	// We are clicking the truck, move the player
+						//	Debug.Log( "Clicked the truck." );
+						//	Vector2 target = Camera.main.ScreenToWorldPoint( new Vector3( Input.mousePosition.x, Input.mousePosition.y, 0f ) );
+						//	//ControllerTruck.truck.MovePlayer( target );
+						//}
+						//else
+						//{
+						//	// We are probably trying to shoot something! Shoot in that direction, if we have hot dogs, of course.
+						//	ControllerTruck.truck.Shoot();
+						//}
 					}
 				}
 			}

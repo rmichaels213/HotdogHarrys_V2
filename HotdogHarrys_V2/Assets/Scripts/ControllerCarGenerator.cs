@@ -18,6 +18,7 @@ public class ControllerCarGenerator : MonoBehaviour
 
 	public GameObject carPrefab1;
 	public GameObject carPrefab2;
+	public GameObject carPrefab3;
 
 	public int minNumberOfCars = 0;
 	public int maxNumberOfCars = 5;
@@ -40,13 +41,13 @@ public class ControllerCarGenerator : MonoBehaviour
 		{
 			numberOfCarsToCreate--;
 
-			int randomCar = (int)Random.Range( 0f, actualNumberOfCarPrefabs );
-			int randomLocation = (int)Random.Range( 0f, 4f );
-			int randomPosition = (int)Random.Range( -14f, 14f );
+			int randomCar = (int)Random.Range( 0.0f, actualNumberOfCarPrefabs );
+			int randomLocation = (int)Random.Range( 0.0f, 4.0f );
+			int randomPosition = (int)Random.Range( -14.0f, 14.0f );
 
-			int randomColorR = (int)Random.Range( 0f, 256f );
-			int randomColorG = (int)Random.Range( 0f, 256f );
-			int randomColorB = (int)Random.Range( 0f, 256f );
+			float randomColorR = Random.Range( 0.0f, 1.0f );
+			float randomColorG = Random.Range( 0.0f, 1.0f );
+			float randomColorB = Random.Range( 0.0f, 1.0f );
 
 			Vector2 velocity = new Vector2( 0f, 0f );
 			float locationToUse;
@@ -70,12 +71,32 @@ public class ControllerCarGenerator : MonoBehaviour
 			}
 
 			Debug.Log( randomCar + " " + randomLocation + " " + randomPosition );
-			Debug.Log( "Creating " + carPrefabs[randomCar].gameObject.name + " at " + randomLocation + " with an offset of " + randomPosition );
+			Debug.Log( "Creating " + carPrefabs[randomCar].gameObject.name + " at " + randomLocation + " with an offset of " + randomPosition +
+				" and colors (" + randomColorR + "," + randomColorG + "," + randomColorB + ")." );
 
 			GameObject newCar = Instantiate( carPrefabs[randomCar], new Vector3( locationToUse, ( ( ControllerRoad.road.roads.Count - 1 ) * ControllerRoad.road.offset ) + randomPosition, 0f ), Quaternion.identity );
-			newCar.GetComponent<SpriteRenderer>().color = new Color( randomColorR, randomColorG, randomColorB );
 			newCar.GetComponent<Rigidbody2D>().velocity = velocity;
 			cars.Add( newCar );
+
+			// Update car color
+			if ( carPrefabs[randomCar].gameObject.name == "carPrefab")
+			{
+				Debug.Log( "Found prefab!" );
+				SpriteRenderer[] sprites = newCar.GetComponentsInChildren<SpriteRenderer>();
+
+				foreach ( SpriteRenderer sr in sprites )
+				{
+					Debug.Log( "Found sprite: " + sr.gameObject.name );
+					if ( sr.gameObject.name == "carFrame")
+					{
+						sr.gameObject.GetComponent<SpriteRenderer>().color = new Color( randomColorR, randomColorG, randomColorB, 1.0f );
+					}
+				}
+			}
+			else
+			{
+				newCar.GetComponent<SpriteRenderer>().color = new Color( randomColorR, randomColorG, randomColorB, 1.0f );
+			}
 		}		
 	}
 
@@ -90,10 +111,13 @@ public class ControllerCarGenerator : MonoBehaviour
 
 		carPrefabs = new GameObject[10];
 
-		carPrefabs[0] = carPrefab1;
-		actualNumberOfCarPrefabs++;
+		//carPrefabs[0] = carPrefab1;
+		//actualNumberOfCarPrefabs++;
 
-		carPrefabs[1] = carPrefab2;
+		//carPrefabs[1] = carPrefab2;
+		//actualNumberOfCarPrefabs++;
+
+		carPrefabs[0] = carPrefab3;
 		actualNumberOfCarPrefabs++;
 
 		PopulateCurrentRoad();
