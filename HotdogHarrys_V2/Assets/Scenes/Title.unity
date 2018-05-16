@@ -841,6 +841,42 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114697705802911762, guid: 0c2b5f0fc8940b949ba2f1870247cf69,
+        type: 2}
+      propertyPath: damages
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f9ff86cbe42ef247a1480dc69d5bd6d,
+        type: 2}
+    - target: {fileID: 114697705802911762, guid: 0c2b5f0fc8940b949ba2f1870247cf69,
+        type: 2}
+      propertyPath: hotDogsHit_Car
+      value: 
+      objectReference: {fileID: 11400000, guid: 5123bb85c6825c147a2d67bbce1decdf,
+        type: 2}
+    - target: {fileID: 114697705802911762, guid: 0c2b5f0fc8940b949ba2f1870247cf69,
+        type: 2}
+      propertyPath: hotDogsHit_Person
+      value: 
+      objectReference: {fileID: 11400000, guid: efc0a1a5d07f201498869e628504cb9c,
+        type: 2}
+    - target: {fileID: 114697705802911762, guid: 0c2b5f0fc8940b949ba2f1870247cf69,
+        type: 2}
+      propertyPath: hotDogsShot
+      value: 
+      objectReference: {fileID: 11400000, guid: 21deab1dd8ccdba4d84fa5d29810035f,
+        type: 2}
+    - target: {fileID: 114697705802911762, guid: 0c2b5f0fc8940b949ba2f1870247cf69,
+        type: 2}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 11400000, guid: cbe95bea426c7414f934ff92408e6341,
+        type: 2}
+    - target: {fileID: 114697705802911762, guid: 0c2b5f0fc8940b949ba2f1870247cf69,
+        type: 2}
+      propertyPath: carsHit
+      value: 
+      objectReference: {fileID: 11400000, guid: 02218c2f1beb58f48991f85057d8e463,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c2b5f0fc8940b949ba2f1870247cf69, type: 2}
   m_IsPrefabParent: 0
@@ -1654,6 +1690,16 @@ Prefab:
     - target: {fileID: 1785974131165808, guid: 44bfb5eb115c6154187f05910e1a9031, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224520240315642676, guid: 44bfb5eb115c6154187f05910e1a9031,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 61.609726
+      objectReference: {fileID: 0}
+    - target: {fileID: 224047409886679328, guid: 44bfb5eb115c6154187f05910e1a9031,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6390549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44bfb5eb115c6154187f05910e1a9031, type: 2}

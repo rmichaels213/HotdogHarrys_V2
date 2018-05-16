@@ -10,10 +10,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class ControllerGameManager : MonoBehaviour
 {
 	public static ControllerGameManager controller;
+
+	public IntVariable score;
+	public IntVariable carsHit;
+	public IntVariable hotDogsShot;
+	public IntVariable hotDogsHit_Car;
+	public IntVariable hotDogsHit_Person;
+	public FloatVariable damages;
 
 	public Canvas canvasGameOver;
 
@@ -42,7 +50,15 @@ public class ControllerGameManager : MonoBehaviour
 		{
 			canvasGameOver.gameObject.SetActive( false );
 		}
-		
+
+		// Reset ga,e variables
+		score.value = 0;
+		carsHit.value = 0;
+		hotDogsShot.value = 0;
+		hotDogsHit_Car.value = 0;
+		hotDogsHit_Person.value = 0;
+		damages.value = 0.0f;
+
 	}
 
 	/// <summary>
@@ -85,12 +101,14 @@ public class ControllerGameManager : MonoBehaviour
 							// Fill in the stats
 							t.text = "Time Left : " + Mathf.FloorToInt( maxTimeAllowed - currentTime ) + " sec\n" +
 								"Collisions: " + ControllerTruck.truck.numberOfCollisions + "\n" +
-								"Food Sold: " + ControllerTruck.truck.foodSold;
+								"People fed: " + hotDogsHit_Person.value + "\n" +
+								"Hot dogs shot: " + hotDogsShot.value + "\n" +
+								"Accuracy: " + Math.Round( ( (float)hotDogsHit_Person.value / (float)hotDogsShot.value ) * 100, 2 ) + "%";
 						}
 						else if ( t.name == "Score" )
 						{
 							// Fill in score
-							t.text = "Score: " + Mathf.FloorToInt( ( Mathf.FloorToInt( maxTimeAllowed - currentTime ) * ControllerTruck.truck.foodSold ) - ( ( currentTime * ControllerTruck.truck.numberOfCollisions ) / 10 ) );
+							t.text = "Score: " + Mathf.FloorToInt( ( Mathf.FloorToInt( maxTimeAllowed - currentTime ) * hotDogsHit_Person.value ) - ( ( currentTime * ControllerTruck.truck.numberOfCollisions ) / 10 ) );
 						}
 					}
 

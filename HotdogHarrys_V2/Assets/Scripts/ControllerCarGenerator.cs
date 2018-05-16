@@ -111,12 +111,6 @@ public class ControllerCarGenerator : MonoBehaviour
 
 		carPrefabs = new GameObject[10];
 
-		//carPrefabs[0] = carPrefab1;
-		//actualNumberOfCarPrefabs++;
-
-		//carPrefabs[1] = carPrefab2;
-		//actualNumberOfCarPrefabs++;
-
 		carPrefabs[0] = carPrefab3;
 		actualNumberOfCarPrefabs++;
 

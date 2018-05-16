@@ -30,7 +30,6 @@ public class ControllerTruck : MonoBehaviour
 	public float acceleration = .5f;
 	public float backwardsAcceleration = .5f;
 	public float deceleration = 5f;
-	public int foodSold;
 	public float horizontalSpeed = 5f;
 	public float hotDogMovingSpeed = 5f;
 	public float maxSpeed = 50f;
@@ -209,6 +208,8 @@ public class ControllerTruck : MonoBehaviour
 
 		GameObject newHotDog = Instantiate( hotDog, transform.position + offset, Quaternion.identity );
 		newHotDog.GetComponent<Rigidbody2D>().velocity = velocity.normalized * hotDogMovingSpeed;
+
+		ControllerGameManager.controller.hotDogsShot.value++;
 
 		// Remove hotdogs
 		Destroy( newHotDog, HOTDOGLIFECYCLE );
